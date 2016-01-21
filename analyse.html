@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>GeoDiver</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body style="background-color:#b5b5b5;">
+    <nav class=" blue darken-4" role="navigation">
+        <div class="nav-wrapper">
+            <div class="row" style="margin-bottom:0">
+                <div class="col s2">
+                    <span class="hide-on-med-and-down" style="margin-left:20px;"><img src="img/logo.svg" height="64px"></span>
+                    <a id="logo-container" href="index.html" class="brand-logo white-text"></i>&nbsp;GeoDiver</a>
+                </div>
+                <div class="col s8">
+                    <ul class="nav_centered tabs hide-on-med-and-down" style="width:200px;">
+                        <li class="tab"><a class="white-text" href="analyse.html">Analyse</a></li>
+                        <li class="tab"><a class="white-text" href="analyse.html">History</a></li>
+                    </ul>
+                </div>
+                <div class="col s2">
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="white-text" href="analyse.html"><i class="material-icons right">perm_identity</i>IsmailM</a></li>
+                    </ul>
+                </div>
+            </div>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="analyse.html">Login</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="section">
+            <div class="card" style="margin-top:30px;">
+                <div class="card-content">
+                    <span class="card-title light-blue-text text-darken-3" style="font-size: 2rem; padding-top:20px;padding-left:10px;">Analyse GEO Datasets</span>
+                    <form id="search_geo">
+                        <div class="input-field" id="search_geo_dataset" style="margin-bottom:25px;">
+                            <i class="material-icons prefix">search</i>
+                            <input id="geo_db" type="text" class="validate" length="7" name="geo_db">
+                            <label for="geo_db">Search GEO Dataset</label>
+                        </div>
+                        <div id="geo_db_summary" style="display:none;">
+                            <p style="padding-top:20px;">
+                                <span class="card-title light-blue-text text-darken-3" id="geo_db_title" style="font-size: 1.5rem;">Acute Dengue patients: whole blood [GDS5093]</span>
+                            </p>
+                            <div class="input-field col s12">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Phenotype to Analyse</span>
+                                <p>
+                                    <input name="phenotype_select" type="radio" checked="checked" value="Disease_State" id="Disease_State" />
+                                    <label for="Disease_State">Disease State</label>
+                                </p>
+                                <p>
+                                    <input name="phenotype_select" type="radio" value="Infection" id="Infection" />
+                                    <label for="Infection">Infection</label>
+                                </p>
+                            </div>
+                            <ul class="collapsible" data-collapsible="accordion" style="box-shadow: none;border: none; margin-top:30px; margin-bottom:-60px;">
+                                <li>
+                                    <div class="collapsible-header light-blue accent-4 waves-effect waves-light btn left" id="adv_params_btn" style="font-size:14px;border-bottom:none;">Advanced Parameters</div>
+                                    <div class="clearfix"></div>
+                                    <div class="collapsible-body" style="border-bottom-style: none; padding: 1em 0px; display: none;">
+                                        <div class="row">
+                                            <div id="Disease_State_Factors" class="input-field col s6">
+                                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Factors to Compare</span>
+                                                <p>
+                                                    <input name="group1" type="checkbox" checked="checked" id="Convalescent" />
+                                                    <label for="Convalescent">Convalescent</label>
+                                                </p>
+                                                <p>
+                                                    <input name="group1" type="checkbox" checked="checked" id="Dengue_Hemorrhagic_Fever" />
+                                                    <label for="Dengue_Hemorrhagic_Fever">Dengue Hemorrhagic Fever</label>
+                                                </p>
+                                                <p>
+                                                    <input name="group1" type="checkbox" checked="checked" id="Dengue_Fever" />
+                                                    <label for="Dengue_Fever">Dengue Fever</label>
+                                                </p>
+                                                <p>
+                                                    <input name="group1" type="checkbox" checked="checked" id="Healthy_Control" />
+                                                    <label for="Healthy_Control">Healthy Control</label>
+                                                </p>
+                                            </div>
+                                            <div id="Infection_Factors" class="input-field col s6" style="display:none;">
+                                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Factors to Compare</span>
+                                                <p>
+                                                    <input name="dengue_fever" type="checkbox" checked="checked" id="Dengue_Fever1" />
+                                                    <label for="Dengue_Fever1">Dengue Fever</label>
+                                                </p>
+                                                <p>
+                                                    <input name="control" type="checkbox" checked="checked" id="Control" />
+                                                    <label for="Control">Control</label>
+                                                </p>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Analyses</span>
+                                                <p>
+                                                    <input name="dge" type="checkbox" checked="checked" id="DGEA_input" />
+                                                    <label for="DGEA_input">Differential Gene Expression Analysis</label>
+                                                </p>
+                                                <p>
+                                                    <input name="gsea" type="checkbox" checked="checked" id="GSEA_input" />
+                                                    <label for="GSEA_input">Gene Set Enrichment Analysis</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn waves-effect waves-light light-blue accent-4 btn-large right load_geo_db" id="analyse_geo_btn" type="submit" value="input">Load GEO Dataset
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <div class="clearfix" style="padding-bottom:20px;"></div>
+                    </form>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">GEO Dataset: GDS5093<i class="material-icons right">close</i></span>
+                    <p>
+                        <span class=" light-blue-text text-darken-3" style="font-size">Title: </span>
+                        <span> </span>
+                    </p>
+                    <p>
+                        <span class=" light-blue-text text-darken-3" style="font-size">Summary</span>
+                    </p>
+                    <p>
+                        <span class=" light-blue-text text-darken-3" style="font-size">Summary</span>
+                    </p>
+                    <p>
+                        <span class=" light-blue-text text-darken-3" style="font-size">Summary</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="results_section" style="display:none;">
+            <div class="card" style="margin-top:30px;">
+                <div class="card-content">
+                    <span class="card-title light-blue-text text-darken-3" style="font-size: 2rem; padding-top:20px;padding-left:10px;">Results</span>
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="tabs">
+                                <li class="tab col s6"><a href="#DGEA" class="light-blue-text text-darken-3 active">Differential Gene Expression Analysis</a></li>
+                                <li class="tab col s6"><a href="#GSEA" class="light-blue-text text-darken-3">Gene Set Enrichment Analysis</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s12" id="DGEA">
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Overview</span>
+                                <br>
+                                <img width="75%" class="materialboxed" style="margin: 0 auto;" src="img/CourseWorkScriptsboxplot.svg">                                
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Principal Component Analysis</span>
+                                <div id="PCA_plot" style="width: 100%; height: 600px;">
+                                    <!-- Plotly chart will be drawn inside this DIV -->
+                                </div>
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Top Genes Table</span>
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Volcano Plots</span>
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Heatmap</span>
+                            </p>
+                        </div>
+                        <div class="col s12" id="GSEA">
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Top Genes Table</span>
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Interaction Plots</span>
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Heatmap</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="load_geo_db">
+            <div class="modal-content">
+                <h4 id="load_data_model_header_text"></h4>
+                <p id="load_data_model_text"></p>
+                <div class="progress">
+                    <div class="indeterminate light-blue accent-2"></div>
+                </div>
+            </div>
+        </div>
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/prototype.js"></script>
+</body>
+
+</html>
