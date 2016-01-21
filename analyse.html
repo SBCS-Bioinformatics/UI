@@ -54,7 +54,7 @@
                                 <span class="card-title light-blue-text text-darken-3" id="geo_db_title" style="font-size: 1.5rem;">Acute Dengue patients: whole blood [GDS5093]</span>
                             </p>
                             <div class="input-field col s12">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Phenotype to Analyse</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Factor to Analyse</span>
                                 <p>
                                     <input name="phenotype_select" type="radio" checked="checked" value="Disease_State" id="Disease_State" />
                                     <label for="Disease_State">Disease State</label>
@@ -71,7 +71,7 @@
                                     <div class="collapsible-body" style="border-bottom-style: none; padding: 1em 0px; display: none;">
                                         <div class="row">
                                             <div id="Disease_State_Factors" class="input-field col s6">
-                                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Factors to Compare</span>
+                                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Select Phenotypes to Compare</span>
                                                 <p>
                                                     <input name="group1" type="checkbox" checked="checked" id="Convalescent" />
                                                     <label for="Convalescent">Convalescent</label>
@@ -125,17 +125,19 @@
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">GEO Dataset: GDS5093<i class="material-icons right">close</i></span>
                     <p>
-                        <span class=" light-blue-text text-darken-3" style="font-size">Title: </span>
-                        <span> </span>
+                        <span class=" light-blue-text text-darken-3" style="font-weight:300; font-size:1.25rem;">Acute Dengue patients: whole blood</span>
                     </p>
                     <p>
-                        <span class=" light-blue-text text-darken-3" style="font-size">Summary</span>
+                        <span class=" light-blue-text text-darken-3" style="font-weight:500;">Summary: </span><br>
+                        <span>Analysis of blood from patients with acute Dengue virus (DENV) infection and during convalescence. Dengue is a mosquito-borne infectious disease and Dengue Hemorrhagic Fever is a life-threatening illness. Results provide insight into molecular mechanisms underlying host response to DENV infection.</span>
                     </p>
                     <p>
-                        <span class=" light-blue-text text-darken-3" style="font-size">Summary</span>
+                        <span class=" light-blue-text text-darken-3" style="font-weight:500;">Organism: </span><br>
+                        <span>Homo sapiens</span>
                     </p>
                     <p>
-                        <span class=" light-blue-text text-darken-3" style="font-size">Summary</span>
+                        <span class=" light-blue-text text-darken-3" style="font-weight:500;">Citations: </span><br>
+                        <span>Kwissa M, Nakaya HI, Onlamoon N, Wrammert J et al. Dengue virus infection induces expansion of a CD14(+)CD16(+) monocyte population that stimulates plasmablast differentiation. Cell Host Microbe 2014 Jul 9;16(1):115-27. PMID: 24981333</span>
                     </p>
                 </div>
             </div>
@@ -146,42 +148,59 @@
                     <span class="card-title light-blue-text text-darken-3" style="font-size: 2rem; padding-top:20px;padding-left:10px;">Results</span>
                     <div class="row">
                         <div class="col s12">
-                            <ul class="tabs">
-                                <li class="tab col s6"><a href="#DGEA" class="light-blue-text text-darken-3 active">Differential Gene Expression Analysis</a></li>
-                                <li class="tab col s6"><a href="#GSEA" class="light-blue-text text-darken-3">Gene Set Enrichment Analysis</a></li>
+                            <ul class="tabs" id="results_tabs">
+                                <li class="tab col s6"><a href="#DGEA" id="DGEA_tab" style="font-size: 1.2rem;" class="light-blue-text text-darken-3">Differential Gene Expression Analysis</a></li>
+                                <li class="tab col s6"><a href="#GSEA" style="font-size: 1.2rem;" class="light-blue-text text-darken-3">Gene Set Enrichment Analysis</a></li>
                             </ul>
                         </div>
                         <div class="col s12" id="DGEA">
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Overview</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Overview</span>
                                 <br>
-                                <img width="75%" class="materialboxed" style="margin: 0 auto;" src="img/CourseWorkScriptsboxplot.svg">                                
+                                <div style="margin: 0 auto; width:75%">
+                                  <img width="100%" class="materialboxed" src="img/boxplot.svg">                                
+                                </div>
                             </p>
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Principal Component Analysis</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Principal Component Analysis</span>
                                 <div id="PCA_plot" style="width: 100%; height: 600px;">
                                     <!-- Plotly chart will be drawn inside this DIV -->
                                 </div>
                             </p>
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Top Genes Table</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Top Genes Table</span>
                             </p>
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Volcano Plots</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Heatmap</span>
+                                <br>
+                                <div style="margin: 0 auto; width:75%">
+                                  <img width="100%" class="materialboxed" src="img/heatmap.svg">                                
+                                </div>
                             </p>
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Heatmap</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Adjusted P-Value distribution for Differentially Expressed Genes</span>
+                                <br>
+                                <div style="margin: 0 auto; width:75%">
+                                  <img width="100%" class="materialboxed" src="img/histogram.svg">                                
+                                </div>
+                            </p>
+                            <p style="padding-top:15px;">
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Volcano Plots for Top 100 differentially expressed Genes</span>
+                                <br>
+                                <div id="volcano_plot" style="width: 100%; height: 600px;">
+                                    <!-- Plotly chart will be drawn inside this DIV -->
+                                </div>
                             </p>
                         </div>
                         <div class="col s12" id="GSEA">
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Top Genes Table</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Top Genes Table</span>
                             </p>
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Interaction Plots</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Interaction Plots</span>
                             </p>
                             <p style="padding-top:15px;">
-                                <span class=" light-blue-text text-darken-3" style="font-size: 1.2rem;">Heatmap</span>
+                                <span class=" light-blue-text text-darken-3" style="font-size: 1.5rem; font-weight: 300;">Heatmap</span>
                             </p>
                         </div>
                     </div>
