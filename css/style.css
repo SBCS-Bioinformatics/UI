@@ -3,15 +3,13 @@ img.materialboxed.initialized.active {
   background-color: #fff;
 }
 
-
-
 nav ul a,
 nav .brand-logo {
   color: #444;
 }
 
 .nav_centered {
-  width: 200px !important;
+  width: 300px !important;
   margin: 0 auto;
   background-color:transparent !important;
   height: 64px;
